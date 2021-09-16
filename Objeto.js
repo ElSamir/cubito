@@ -3,12 +3,11 @@ const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.inner
 const renderer = new THREE.WebGLRenderer({ antialias: true})
 
 renderer.setSize( window.innerWidth, window.innerHeight )
-// sets renderer background color
 renderer.setClearColor("#222222")
 document.body.appendChild( renderer.domElement )
 camera.position.z = 5
 
-// resize canvas on resize window
+
 window.addEventListener( 'resize', () => {
 	let width = window.innerWidth
 	let height = window.innerHeight
@@ -17,13 +16,13 @@ window.addEventListener( 'resize', () => {
 	camera.updateProjectionMatrix()
 })
 
-// basic cube
+
 var geometry = new THREE.BoxGeometry( 1, 1, 1)
 var material = new THREE.MeshStandardMaterial( { color: 2371e1, flatShading: true, metalness: 0, roughness: 3 })
 var cube = new THREE.Mesh ( geometry, material )
 scene.add( cube )
 
-// wireframe cube
+
 var geometry = new THREE.BoxGeometry( 3, 3, 3)
 var material = new THREE.MeshBasicMaterial( {
 	color: "#FF0051", wireframe: true, transparent: true
@@ -31,11 +30,11 @@ var material = new THREE.MeshBasicMaterial( {
 var wireframeCube = new THREE.Mesh ( geometry, material )
 scene.add( wireframeCube )
 
-// ambient light
+
 var ambientLight = new THREE.AmbientLight ( 0xffffff, 0.2)
 scene.add( ambientLight )
 
-// point light
+
 var pointLight = new THREE.PointLight( 0xffffff, 3 );
 pointLight.position.set( 25, 50, 25 );
 scene.add( pointLight );
